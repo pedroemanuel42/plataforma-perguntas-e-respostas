@@ -8,13 +8,24 @@ app.get("/:nome/:lang", (req, res) => {
     const nome = req.params.nome;
     const lang = req.params.lang;
     const showMsg = true;
+
+    const products = [
+        {name: 'Doritos', price:3.14},
+        {name: 'Coca-cola', price:5},
+        {name: 'Leite', price:1.45},
+        {name: 'Carne', price: 15},
+        {name: 'Redbull', price: 6},
+        {name: 'Nescau', price: 4}
+    ];
+
     // render() olha diretamente na pasta views, por isso não precisa de direcionamento
     res.render('index', {
         nome: nome,
         lang: lang,
         empresa: "Guia do programador",
         inscritos: 8000,
-        msg: showMsg
+        msg: showMsg,
+        products: products
     });
 });
 
