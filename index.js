@@ -7,12 +7,14 @@ app.set('view engine', 'ejs');
 app.get("/:nome/:lang", (req, res) => {
     const nome = req.params.nome;
     const lang = req.params.lang;
+    const showMsg = true;
     // render() olha diretamente na pasta views, por isso não precisa de direcionamento
     res.render('index', {
         nome: nome,
         lang: lang,
         empresa: "Guia do programador",
-        inscritos: 8000
+        inscritos: 8000,
+        msg: showMsg
     });
 });
 
