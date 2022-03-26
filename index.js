@@ -12,8 +12,12 @@ app.get('/', (req, res) => {
 
 app.get('/ask', (req, res) => {
     res.render('ask');
-})
+});
+
+app.post('/asksave', (req, res) => {
+    res.send('Formulário respondido!')
+});
 
 app.listen(8080, () => {
     console.log('App rodando!');
-})
+});
