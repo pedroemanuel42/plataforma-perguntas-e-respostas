@@ -53,7 +53,9 @@ app.get('/ask/:id', (req, res) => {
         }
     }).then(ask => {
         if(ask != undefined) {
-            res.render('ask-id');
+            res.render('ask-id', {
+                ask: ask
+            });
         } else {
             res.redirect('/');
         }
