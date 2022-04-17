@@ -63,6 +63,18 @@ app.get('/ask/:id', (req, res) => {
     });
 });
 
+app.post('/answer', (req, res) => {
+    const text = req.body.text;
+    const askId = req.body.askId;
+
+    Answer.create({
+        body: text,
+        askId: askId
+    }).then(() => {
+        res.redirect('/ask/' + askId);
+    });
+});
+
 app.listen(8080, () => {
     console.log('App rodando!');
 });
