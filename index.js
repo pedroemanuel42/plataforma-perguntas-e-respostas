@@ -20,7 +20,9 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    Ask.findAll({ raw: true }).then(asks => {
+    Ask.findAll({ raw: true, order:[
+        ['id', 'DESC']
+    ]}).then(asks => {
         res.render('index', {
             asks: asks
         });
