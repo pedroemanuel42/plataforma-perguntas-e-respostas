@@ -34,14 +34,29 @@ app.get('/ask', (req, res) => {
 });
 
 app.post('/asksave', (req, res) => {
-    var title = req.body.title;
-    var description = req.body.description;
+    const title = req.body.title;
+    const description = req.body.description;
 
     Ask.create({
         title: title,
         description: description
     }).then(() => {
         res.redirect('/');
+    });
+});
+
+app.get('/ask/:id', (req, res) => {
+    const id = req.params.id;
+    Ask.findOne({
+        where: {
+            id: id
+        }
+    }).then(ask => {
+        if(ask != undefined) {
+            res.render('ask-id');
+        } else {
+            res.redirect('/');
+        }
     });
 });
 
